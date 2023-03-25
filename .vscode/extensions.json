@@ -1,0 +1,6 @@
+{
+    "recommendations": [
+        "prisma.prisma",
+        "ms-python.vscode-pylance",
+    ]
+}

@@ -1,0 +1,38 @@
+// this is your Prisma schema file, here you define all data models, enums, generators, etc
+// see https://www.prisma.io/docs/concepts/components/prisma-schema
+
+datasource client {
+  // datasource provider can be any of
+  // sqlite, postgresql, mysql, mongodb or sqlserver
+  // see https://www.prisma.io/docs/concepts/database-connectors
+  provider = "sqlite"
+  url      = "file:dev.db"
+}
+
+generator client {
+  // this option here is what tells prisma to generate the python client
+  // whenever you run prisma generate
+  provider = "prisma-client-py"
+
+  // pass options to Prisma Client Python
+  // the `interface` option being set to asyncio means that the generated client
+  // will be asynchronous, this means you will need to `await` queries.
+  interface = "asyncio"
+
+  // tells Prisma Client Python the depth that pseudo-recursive types should be generated to
+  // use -1 for standard recursive types
+  // see https://github.com/RobertCraigie/prisma-client-py/blob/master/docs/config.md#partial-type-generator
+  recursive_type_depth = 5
+
+  // uncomment the line below and point it to a python script to generate partial types
+  // see https://github.com/RobertCraigie/prisma-client-py/blob/master/docs/config.md#partial-type-generator
+  // partial_type_generator = ""
+}
+
+// example model
+// see https://www.prisma.io/docs/concepts/components/prisma-schema
+// for how to define models
+model User {
+  id   String @id @default(cuid())
+  name String
+}
