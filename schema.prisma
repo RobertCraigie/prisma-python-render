@@ -26,13 +26,14 @@ generator client {
 
   // uncomment the line below and point it to a python script to generate partial types
   // see https://github.com/RobertCraigie/prisma-client-py/blob/master/docs/config.md#partial-type-generator
-  // partial_type_generator = ""
+  partial_type_generator = ".prisma/partials.py"
 }
 
 // example model
 // see https://www.prisma.io/docs/concepts/components/prisma-schema
 // for how to define models
 model User {
-  id   String @id @default(cuid())
-  name String
+  id    String  @id @default(cuid())
+  name  String
+  email String?
 }
