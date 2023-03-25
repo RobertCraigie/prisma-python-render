@@ -1,4 +1,5 @@
 """Basic FastAPI app for CRUD operations on users and posts using Prisma Client Python"""
+import logging
 from typing import Optional, List
 
 from fastapi import FastAPI
@@ -9,6 +10,8 @@ from prisma.partials import UserWithoutRelations
 
 app = FastAPI()
 prisma = Prisma(auto_register=True)
+
+logging.basicConfig()
 
 
 @app.on_event('startup')  # type: ignore
